@@ -1,10 +1,12 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using TrilhaApiDesafio.Context;
+using TrilhaApiDesafio.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IOrganizadorRepository, OrganizadorRepository>();
 builder.Services.AddDbContext<OrganizadorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
